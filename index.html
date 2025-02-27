@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Aspiring Software Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #1a1a1a;
+            --accent-color: #3498db;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #111;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem 2rem;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+      /* Home Section */
+.home {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Added for horizontal centering */
+    padding: 0 10%;
+    background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+    text-align: center; /* Added for text centering */
+}
+
+.home-content {
+    max-width: 800px; /* Increased from 600px */
+    margin: 0 auto; /* Center the content block */
+}
+
+.home-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem; /* Increased from 1rem */
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: fadeInUp 0.8s forwards;
+    line-height: 1.2; /* Better line spacing */
+}
+
+.home-content p {
+    font-size: 1.3rem; /* Increased from 1.2rem */
+    margin-bottom: 2.5rem; /* Increased from 2rem */
+    opacity: 0;
+    animation: fadeIn 1s 0.5s forwards;
+    max-width: 600px; /* Limit paragraph width */
+    margin-left: auto; /* Center the paragraph */
+    margin-right: auto;
+    padding: 0 20px; /* Add padding on mobile */
+}
+
+       
+
+        /* Button Styles */
+        .cta-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--primary-color), #27ae60);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+        }
+
+        .cta-btn::after {
+            content: '→';
+            margin-left: 10px;
+            transition: margin 0.3s ease;
+        }
+
+        .cta-btn:hover::after {
+            margin-left: 15px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 10%;
+            background: #1a1a1a;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 5rem 10%;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 10%;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: #1a1a1a;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            background: var(--primary-color);
+            transition: background 0.3s;
+        }
+
+        .project-links a:hover {
+            background: #27ae60;
+        }
+
+        /* Certificates Section */
+        .certificates {
+            padding: 5rem 10%;
+            background: #1a1a1a;
+        }
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .certificate-card {
+            background: #2d2d2d;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .certificate-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .certificate-details {
+            text-align: left;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .certificate-topics {
+            margin: 0.5rem 0 0 1.5rem;
+        }
+
+        .view-certificate-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .view-certificate-btn:hover {
+            background: #27ae60;
+        }
+
+        .coming-soon {
+            margin-top: 3rem;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .coming-soon ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .coming-soon li {
+            display: inline-block;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(46, 204, 113, 0.1);
+            border-radius: 5px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 10%;
+            background: #1a1a1a;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .contact-card {
+            background: #2d2d2d;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1001;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            margin: auto;
+            display: block;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .home {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 8rem;
+            }
+
+            .profile-img {
+                position: static;
+                margin-top: 2rem;
+                width: 250px;
+                height: 250px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="home">
+        <div class="home-content">
+            <h1>Hi, I'm <span style="color: var(--primary-color);">Shinagam Ranjith Kumar</span></h1>
+            <p>B.Tech 2nd Year Student | Aspiring Software Developer<br>
+            Java | Python | DSA | Web Development | Machine Learning</p>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Detail-oriented Computer Science student with a passion for developing innovative solutions. Currently pursuing B.Tech in Computer Science at VIT-AP University with a 8.92 CGPA. Experienced in developing web applications and machine learning models.</p>
+                <br>
+                <h3>Education</h3>
+                <p>VIT-AP University - B.Tech CSE (2023-2027)<br>
+                Relevant Coursework: Data Structures, Algorithms, DBMS, OOPS</p>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fab fa-java fa-3x"></i>
+                <h3>Java</h3>
+                <p>Advanced OOP concepts</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-python fa-3x"></i>
+                <h3>Python</h3>
+                <p>NumPy, Pandas, Scikit-learn</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-code fa-3x"></i>
+                <h3>Web Development</h3>
+                <p>HTML, CSS</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://media.istockphoto.com/id/1188898854/vector/landing-page-template-vector-abstract-liquid-fluid-blue-trendy-background-corporate-business.jpg?s=612x612&w=0&k=20&c=mnaU-VYCZ8SREXC9wLAQ7OW6tHcmZ58uaf_4Sg8bc9k=')"></div>
+                <div class="project-content">
+                    <h3>Responsive Landing Page</h3>
+                    <a href="https://prompt-maker8.github.io/Landing-Page/">Visit site</a>
+                   
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://cdn.pixabay.com/photo/2023/01/22/23/16/tic-tac-toe-7737546_1280.jpg')"></div>
+                <div class="project-content">
+                    <h3>Tic Tac Toe Game</h3>
+                    <a href="https://prompt-maker8.github.io/tic-tac-toe/">Visit site</a>
+                   
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('https://ygo-assets-websites-editorial-emea.yougov.net/images/Alarm_clock.original.jpg')"></div>
+                <div class="project-content">
+                    <h3 >Digital Stopwatch</h3>
+                    <a href="https://prompt-maker8.github.io/Stop-watch/">Visit site</a>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <a href="mailto:your.email@example.com">ranjithkumar79464@gmail.com</a>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Phone</h3>
+                <a href="tel:+1234567890">6281922699</a>
+            </div>
+            <div class="contact-card">
+                <i class="fab fa-linkedin"></i>
+                <h3>LinkedIn</h3>
+                <a href="https://www.linkedin.com/in/shinagam-ranjith-kumar-8631a7322/" target="_blank">Shinagam Ranjith Kumar</a>
+            </div>
+            <div class="contact-card">
+                <i class="fab fa-github"></i>
+                <h3>GitHub</h3>
+                <a href="https://github.com/Prompt-maker8" target="_blank">Prompt-maker8</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Modal -->
+    <div id="certificateModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.about-content').forEach((el) => observer.observe(el));
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Certificate Modal Functions
+        function openModal(img) {
+            document.getElementById('certificateModal').style.display = "block";
+            document.getElementById('modalImage').src = img.src;
+        }
+
+        function closeModal() {
+            document.getElementById('certificateModal').style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('certificateModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
